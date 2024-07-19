@@ -7,7 +7,7 @@
 - Streamlit
 - pandas
 
-![image](https://github.com/luis0o2/Dashboard/assets/59019460/01685141-f86a-4cb5-ae1a-08dfc55d5493)
+![image](https://github.com/user-attachments/assets/d1430c07-b606-4473-88a0-d2972ad323f0)
 
 ![image](https://github.com/luis0o2/Dashboard/assets/59019460/7e6f2fc0-fd0a-499b-b6b1-0b32aacd51ca)
 
