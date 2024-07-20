@@ -11,5 +11,5 @@
 
 ![image](https://github.com/luis0o2/Dashboard/assets/59019460/7e6f2fc0-fd0a-499b-b6b1-0b32aacd51ca)
 
-![image](https://github.com/luis0o2/Dashboard/assets/59019460/6e62153d-a64a-48ab-821d-845d6493117d)
+![image](https://github.com/user-attachments/assets/a548efbf-fe9f-4df6-8751-b6fbcd813132)
 
