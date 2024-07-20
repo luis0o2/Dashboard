@@ -5,6 +5,25 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 
+
+st.markdown(
+    """
+    <style>
+    .main {
+        background-color: #000000
+        }
+        .sidebar .sidebar-content {
+        background-color: #000000
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
+
+
 # color dictionary for pie chart
 color_dict = {
     'Black': '#000000', 'White': '#FFFFFF', 'Navy': '#000080', 'Asphalt': '#3C3F41', 'Kelly Green': '#4CBB17',
@@ -18,6 +37,8 @@ df = pd.read_csv('report.csv', parse_dates=['Date'])   #reading csv file
 df['Sold'] = pd.to_numeric(df['Sold'], errors='coerce')
 df['Royalty'] = pd.to_numeric(df['Royalty'], errors='coerce')
 df['Returned'] = pd.to_numeric(df['Returned'], errors='coerce')
+
+
 #making a seperate header named Month_Year using the datetime library
 df['Month_Year'] = df['Date'].dt.strftime('%m/%Y')
 #grouping 2 headers(month_year and marketplace) and their sold sums filling any empty value with 0
@@ -60,6 +81,7 @@ pie_colors = [color_dict[color] for color in colors]
 fig, ax = plt.subplots()
 ax.pie(counts, labels=None, autopct=None, startangle=140, colors=pie_colors)
 ax.axis('equal')
+st.title(':red[Colors Sold]')
 st.pyplot(fig)
 
 data = pd.DataFrame({
@@ -84,7 +106,7 @@ ax.grid(True)
 plt.xticks(rotation=45)
 plt.tight_layout()
 
-st.title('Marketplace Sales Analysis')
+st.title(':red[Marketplace Sales Analysis]')
 st.pyplot(fig)
 
 st.write(marketplace_monthly_sales)
@@ -95,24 +117,18 @@ st.write(marketplace_monthly_sales)
 grouped = df.groupby('Product Type').agg({'Royalty': 'sum', 'Sold': 'sum', 'Returned': 'sum'})
 grouped['Return Rate'] = grouped['Returned'] / grouped['Sold'] * 100
 grouped['Return Rate'] = grouped['Return Rate'].apply(lambda x: f'{x:.2f}%')
+royalty_by_product = df.groupby('Product Type')['Royalty'].sum().reset_index()
+st.title(':red[Dashboard]')
+fig, ax = plt.subplots()
+ax.bar(royalty_by_product['Product Type'], royalty_by_product['Royalty'])
+ax.set_xlabel('Product Type')
+ax.set_ylabel('Royalty')
+ax.set_xticklabels(royalty_by_product['Product Type'], rotation=90)
+st.pyplot(fig)
 
-st.title('Dashboard')
 st.write(grouped)
 #**********************DASHBOARD CODE******************************END
 
 
-st.sidebar.title('Menu')
-st.markdown(
-    """
-    <style>
-    .main {
-        background-color: #4F007F
-        }
-        .sidebar .sidebar-content {
-        background-color: #4F007F;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
